@@ -1,0 +1,58 @@
+[
+  {
+    "label": "新增功能",
+    "name": "feat"
+  },
+  {
+    "label": "修复问题/BUG",
+    "name": "fix"
+  },
+  {
+    "label": "样式修改",
+    "name": "style"
+  },
+  {
+    "label": "优化/性能提升",
+    "name": "perf"
+  },
+  {
+    "label": "重构",
+    "name": "refactor"
+  },
+  {
+    "label": "撤销修改",
+    "name": "revert"
+  },
+  {
+    "label": "测试相关",
+    "name": "test"
+  },
+  {
+    "label": "文档/注释",
+    "name": "docs"
+  },
+  {
+    "label": "依赖更新/脚手架配置更新",
+    "name": "chore"
+  },
+  {
+    "label": "工作流改进",
+    "name": "workflow"
+  },
+  {
+    "label": "持续集成",
+    "name": "ci"
+  },
+  {
+    "label": "类型定义更改",
+    "name": "types"
+  },
+  {
+    "label": "开发中",
+    "name": "wip"
+  },
+  {
+    "label": "未定义",
+    "name": "undefined"
+  }
+]
