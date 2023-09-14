@@ -440,6 +440,14 @@ function wk { cd D:\Work }
 
 function cl { clear }
 
+function cpw {
+    $propath = Split-Path -Path $profile
+    code $propath
+} 
+function pw {
+    $propath = Split-Path -Path $profile
+    cd $propath
+} 
 function pf { code $PROFILE}
 
 function cc { code . }
@@ -447,3 +455,5 @@ function cc { code . }
 function co { Param($0) cd $0 ; cc }
 
 function mk { Param($0) mkdir $0 ; cd $0 }
+
+function pp { pwsh }
