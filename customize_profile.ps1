@@ -9,13 +9,12 @@ function pull { git pull }
 
 function push { git push }
 
-$PROPATH = "E:\Users\Helix\Documents\PowerShell"
 function gld {
-  zx --experimental $PROPATH\ctlscript.mjs -f gitlog -m day
+  zx --experimental $PSScriptRoot\ctlscript.mjs -f gitlog -m day
 }
 
 function glt {
-  zx --experimental $PROPATH\ctlscript.mjs -f gitlog -m type
+  zx --experimental $PSScriptRoot\ctlscript.mjs -f gitlog -m type
 }
 
 # npm
@@ -86,15 +85,22 @@ function wk { cd D:\Work }
 
 function cl { clear }
 
-function cpw {
-    $propath = Split-Path -Path $profile
-    code $propath
-} 
+
+# Profile配置相关
+
 function pw {
-    $propath = Split-Path -Path $profile
-    cd $propath
+    cd $PSScriptRoot
+} 
+function cpw {
+    code $PSScriptRoot
+} 
+function cmp {
+    echo $PSScriptRoot\customize_profile.ps1
 } 
 function pf { code $PROFILE}
+
+
+# 快捷操作
 
 function cc { code . }
 

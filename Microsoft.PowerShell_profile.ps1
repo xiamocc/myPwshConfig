@@ -2,7 +2,7 @@ using namespace System.Management.Automation
 using namespace System.Management.Automation.Language
 
 # 引入自定义配置
-Import-Module .\customize_profile.ps1
+Import-Module $PSScriptRoot\customize_profile.ps1
 
 if ($host.Name -eq 'ConsoleHost')
 {
