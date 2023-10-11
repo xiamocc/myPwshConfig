@@ -57,6 +57,8 @@ function yi { yarn install }
 
 function yp { yarn publish }
 
+function yr { Param($0) yarn remove $0 }
+
 function yd { Param($0) yarn add $0 }
 
 function ydd { Param($0) yarn add -D $0 }
@@ -65,16 +67,16 @@ function yu { yarn upgrade }
 
 function bz {
     yb && ybi
-    rz
+    zb
 }
 
-function rz {
-    rez
+function zb {
+    rz
     if (Test-Path -Path ./dist) { zip -r dist.zip dist }
     if (Test-Path -Path ./inside) { zip -r inside.zip inside }
 }
 
-function rez {
+function rz {
     if ([System.IO.File]::Exists("./dist.zip")) { rimraf dist.zip }
     if ([System.IO.File]::Exists("./inside.zip")) { rimraf inside.zip }
 }
@@ -109,3 +111,9 @@ function co { Param($0) cd $0 ; cc }
 function mk { Param($0) mkdir $0 ; cd $0 }
 
 function pp { pwsh }
+
+# route 操作
+
+function rp{ route print -4 }
+
+function rdra { route delete 218.93.20.10 && route add 218.93.20.10 mask 255.255.255.255 192.168.31.1 }
