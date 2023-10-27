@@ -1,3 +1,8 @@
+function echoInfo {
+    Param($0, $1)
+    Write-Host "`e[$($0)m$1`e[0m"
+}
+
 # git
 function status { git status }
 
@@ -51,7 +56,19 @@ function yb {
     }
 }   
 
-function ybi { yarn build:inside }
+function ybd {
+    $start1 = Get-Date
+    yarn build:develop
+    $end1 = Get-Date
+    echoInfo 32 ('==========> Build Runtime: ' + ($end1 - $start1).TotalSeconds)
+}
+
+function ybp {
+    $start2 = Get-Date
+    yarn build:production
+    $end2 = Get-Date
+    echoInfo 32 ('==========> Build Runtime: ' + ($end2 - $start2).TotalSeconds)
+}
 
 function yi { yarn install }
 
@@ -66,17 +83,38 @@ function ydd { Param($0) yarn add -D $0 }
 function yu { yarn upgrade }
 
 function bz {
-    yb && ybi
+    Param($0)
+    if(!$0) { $0 = 0 }
+    $start = Get-Date
+    echoInfo 32 ('==========> Now DateTime: ' + $start)
+    $text = "==========> Start:build"
+    echoInfo 32 $text
+    if($0 -eq 0) {
+        $text = "==========> Build:develop"
+        echoInfo 32 $text
+        $Null = ybd
+    } else {
+        $text = "==========> Build:production"
+        echoInfo 32 $text
+        $Null = ybp
+    }
     zb
+    $end = Get-Date
+    echoInfo 91 ('==========> Total Runtime: ' + ($end - $start).TotalSeconds)
+    echoInfo 32 ('==========> Now DateTime: ' + $end)
 }
 
 function zb {
+    $text = "==========> Suppress:folder"
+    echoInfo 32 $text
     rz
-    if (Test-Path -Path ./dist) { zip -r dist.zip dist }
-    if (Test-Path -Path ./inside) { zip -r inside.zip inside }
+    if (Test-Path -Path ./dist) { $Null = zip -r dist.zip dist }
+    if (Test-Path -Path ./inside) { $Null = zip -r inside.zip inside }
 }
 
 function rz {
+    $text = "==========> Delete:oldzip"
+    echoInfo 32 $text
     if ([System.IO.File]::Exists("./dist.zip")) { rimraf dist.zip }
     if ([System.IO.File]::Exists("./inside.zip")) { rimraf inside.zip }
 }
@@ -114,6 +152,6 @@ function pp { pwsh }
 
 # route 操作
 
-function rp{ route print -4 }
+function rl{ route print -4 }
 
 function rdra { route delete 218.93.20.10 && route add 218.93.20.10 mask 255.255.255.255 192.168.31.1 }
