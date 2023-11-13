@@ -15,11 +15,22 @@ function pull { git pull }
 function push { git push }
 
 function gld {
-  zx --experimental $PSScriptRoot\ctlscript.mjs -f gitlog -m day
+    Param($0)
+    if($0) {
+        zx --experimental $PSScriptRoot\ctlscript.mjs -f gitlog -m day -d $0
+    } else {
+        zx --experimental $PSScriptRoot\ctlscript.mjs -f gitlog -m day
+    }
+  
 }
 
 function glt {
-  zx --experimental $PSScriptRoot\ctlscript.mjs -f gitlog -m type
+    Param($0)
+    if($0) {
+        zx --experimental $PSScriptRoot\ctlscript.mjs -f gitlog -m type -d $0
+    } else {
+        zx --experimental $PSScriptRoot\ctlscript.mjs -f gitlog -m type
+    }
 }
 
 # npm
